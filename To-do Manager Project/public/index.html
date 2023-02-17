@@ -4,9 +4,103 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
     <link rel="stylesheet" href="./style.css" />
     <script defer src="../src/app.js" type="module"></script>
     <title>To Do Manager</title>
   </head>
-  <body></body>
+  <body class="m-0 p-0 bg-dark text-light">
+    <div class="container my-3" id="to-do-container">
+      <!-- add button area -->
+      <div class="row my-1">
+        <div class="col d-flex justify-content-end">
+          <div class="btn btn-primary" id="add-task-btn">
+            <i class="bi bi-plus-circle"></i>
+            <span>ADD</span>
+          </div>
+        </div>
+      </div>
+      <!-- adding new task area: -->
+      <div
+        class="row d-flex justify-content-between d-none"
+        id="new-task-input"
+      >
+        <div class="col-12">
+          <textarea
+            name="new task"
+            id="textarea"
+            class="w-100 bg-dark text-light"
+          ></textarea>
+        </div>
+        <div class="col-5">
+          <input
+            type="button"
+            value="Submit"
+            class="btn btn-primary w-100"
+            id="new-task-submit-btn"
+          />
+        </div>
+        <div class="col-5">
+          <input
+            type="button"
+            value="Cancel"
+            class="btn btn-outline-warning w-100"
+            id="new-task-cancel-btn"
+          />
+        </div>
+      </div>
+      <hr />
+      <!-- all tasks: -->
+      <div
+        class="container text-center d-block"
+        id="is-not-any-task-notification"
+      >
+        <span class="display-6"
+          >You don't have any task yet. Click on 'ADD' button to add new
+          task</span
+        >
+      </div>
+      <div
+        class="container m-0 p-0 d-flex flex-column-reverse"
+        id="tasks-container"
+      >
+        <!-- <div class="container border border-1 rounded">
+          <div class="row d-flex justify-content-end">
+            <div
+              class="col-2 p-0 btn border border-dark border-1 rounded m-1 text-center bg-warning"
+            >
+              <i class="bi bi-pencil" style="color: black"></i>
+            </div>
+            <div
+              class="col-2 p-0 btn border border-dark border-1 rounded m-1 text-center bg-danger"
+            >
+              <i class="bi bi-trash3" style="color: black"></i>
+            </div>
+            <div
+              class="col-2 p-0 btn border border-dark border-1 rounded m-1 text-center bg-success"
+            >
+              <i class="bi bi-check2" style="color: white"></i>
+            </div>
+          </div>
+          <div class="row">
+            <p>Some text</p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </body>
 </html>
