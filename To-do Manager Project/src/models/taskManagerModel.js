@@ -14,6 +14,7 @@ export class TaskManager {
         });
         if (typeof indToRemove === "number")
             this.tasks.splice(indToRemove, 1);
+        localStorage.setItem("ArsenTasks", JSON.stringify(this.tasks));
     };
     changeAllTasks(tasks) {
         this.tasks = tasks;

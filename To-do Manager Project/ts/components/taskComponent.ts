@@ -1,4 +1,9 @@
+import { taskManager } from "../app.js";
 import { Task } from "../models/taskModel.js";
+import {
+  NO_TASKS_NOTIFICATION,
+  TASKS_CONTAIENER,
+} from "../services/domService.js";
 
 export const CreateTaskElement = (task: Task) => {
   const taskContainer = document.createElement("div");
@@ -13,7 +18,13 @@ export const CreateTaskElement = (task: Task) => {
   );
 
   const btnContainer = document.createElement("div");
-  btnContainer.classList.add("row", "d-flex", "justify-content-end");
+  btnContainer.classList.add(
+    "row",
+    "m-0",
+    "p-0",
+    "d-flex",
+    "justify-content-end"
+  );
 
   const editBtn = document.createElement("div");
   editBtn.classList.add(
@@ -24,7 +35,8 @@ export const CreateTaskElement = (task: Task) => {
     "border-dark",
     "border-1",
     "rounded",
-    "m-1",
+    "ms-1",
+    "my-1",
     "text-center",
     "bg-warning"
   );
@@ -42,7 +54,8 @@ export const CreateTaskElement = (task: Task) => {
     "border-dark",
     "border-1",
     "rounded",
-    "m-1",
+    "ms-1",
+    "my-1",
     "text-center",
     "bg-danger"
   );
@@ -60,7 +73,8 @@ export const CreateTaskElement = (task: Task) => {
     "border-dark",
     "border-1",
     "rounded",
-    "m-1",
+    "ms-1",
+    "my-1",
     "text-center",
     "bg-success"
   );
@@ -82,6 +96,63 @@ export const CreateTaskElement = (task: Task) => {
   descriptionContainer.appendChild(description);
 
   taskContainer.appendChild(descriptionContainer);
+
+  editBtn.addEventListener("click", () => {
+    const textArea = document.createElement("textarea");
+    textArea.id = "edit-textarea";
+    textArea.classList.add("w-100", "bg-warning", "text-dark");
+    textArea.innerText = `${task.description} <-- Edit`;
+
+    const editSubmitBtn = document.createElement("input");
+    editSubmitBtn.type = "button";
+    editSubmitBtn.value = "Edit";
+    editSubmitBtn.classList.add(
+      "btn",
+      "btn-outline-primary",
+      "w-100",
+      "mb-1",
+      "text-light",
+      "rounded-0",
+      "rounded-bottom-1"
+    );
+
+    taskContainer.removeChild(descriptionContainer);
+    taskContainer.appendChild(textArea);
+    taskContainer.appendChild(editSubmitBtn);
+
+    editSubmitBtn.addEventListener("click", () => {
+      description.innerText = textArea.value;
+      taskContainer.removeChild(textArea);
+      taskContainer.removeChild(editSubmitBtn);
+      taskContainer.appendChild(descriptionContainer);
+
+      taskManager.tasks.forEach((elem) => {
+        if (elem.id === task.id) {
+          elem.description = description.innerText;
+        }
+        localStorage.setItem("ArsenTasks", JSON.stringify(taskManager.tasks));
+      });
+    });
+  });
+
+  deleteBtn.addEventListener("click", () => {
+    taskManager.delete(task.id);
+    TASKS_CONTAIENER.removeChild(taskContainer);
+    if (taskManager.tasks.length === 0) {
+      NO_TASKS_NOTIFICATION.classList.remove("d-none");
+      NO_TASKS_NOTIFICATION.classList.add("d-block");
+    }
+  });
+
+  doneBtn.addEventListener("click", () => {
+    taskContainer.classList.add("bg-success");
+    taskManager.tasks.forEach((taskOfManager) => {
+      if (taskOfManager.id === task.id) {
+        taskOfManager.status = 1;
+      }
+    });
+    localStorage.setItem("ArsenTasks", JSON.stringify(taskManager.tasks));
+  });
 
   return taskContainer;
 };
