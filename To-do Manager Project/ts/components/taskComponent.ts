@@ -13,6 +13,8 @@ export const CreateTaskElement = (task: Task) => {
     "rounded"
   );
 
+  if (task.status === 1) taskContainer.classList.add("bg-success");
+
   const btnContainer = document.createElement("div");
   btnContainer.classList.add(
     "row",
@@ -81,7 +83,7 @@ export const CreateTaskElement = (task: Task) => {
 
   btnContainer.appendChild(editBtn);
   btnContainer.appendChild(deleteBtn);
-  btnContainer.appendChild(doneBtn);
+  if (task.status === 0) btnContainer.appendChild(doneBtn);
 
   taskContainer.appendChild(btnContainer);
 

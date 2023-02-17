@@ -3,6 +3,8 @@ export const CreateTaskElement = (task) => {
     const taskContainer = document.createElement("div");
     taskContainer.id = `task-${task.id}`;
     taskContainer.classList.add("container", "my-2", "border", "border-1", "border-secondary", "rounded");
+    if (task.status === 1)
+        taskContainer.classList.add("bg-success");
     const btnContainer = document.createElement("div");
     btnContainer.classList.add("row", "m-0", "p-0", "d-flex", "justify-content-end");
     const editBtn = document.createElement("div");
@@ -25,7 +27,8 @@ export const CreateTaskElement = (task) => {
     doneBtn.appendChild(doneBtnIcon);
     btnContainer.appendChild(editBtn);
     btnContainer.appendChild(deleteBtn);
-    btnContainer.appendChild(doneBtn);
+    if (task.status === 0)
+        btnContainer.appendChild(doneBtn);
     taskContainer.appendChild(btnContainer);
     const descriptionContainer = document.createElement("div");
     descriptionContainer.classList.add("row");
