@@ -1,5 +1,4 @@
-import { taskManager } from "../app.js";
-import { NO_TASKS_NOTIFICATION, TASKS_CONTAIENER, } from "../services/domService.js";
+import { deleteTask, doneTask, editTask } from "../services/taskService.js";
 export const CreateTaskElement = (task) => {
     const taskContainer = document.createElement("div");
     taskContainer.id = `task-${task.id}`;
@@ -35,46 +34,13 @@ export const CreateTaskElement = (task) => {
     descriptionContainer.appendChild(description);
     taskContainer.appendChild(descriptionContainer);
     editBtn.addEventListener("click", () => {
-        const textArea = document.createElement("textarea");
-        textArea.id = "edit-textarea";
-        textArea.classList.add("w-100", "bg-warning", "text-dark");
-        textArea.innerText = `${task.description} <-- Edit`;
-        const editSubmitBtn = document.createElement("input");
-        editSubmitBtn.type = "button";
-        editSubmitBtn.value = "Edit";
-        editSubmitBtn.classList.add("btn", "btn-outline-primary", "w-100", "mb-1", "text-light", "rounded-0", "rounded-bottom-1");
-        taskContainer.removeChild(descriptionContainer);
-        taskContainer.appendChild(textArea);
-        taskContainer.appendChild(editSubmitBtn);
-        editSubmitBtn.addEventListener("click", () => {
-            description.innerText = textArea.value;
-            taskContainer.removeChild(textArea);
-            taskContainer.removeChild(editSubmitBtn);
-            taskContainer.appendChild(descriptionContainer);
-            taskManager.tasks.forEach((elem) => {
-                if (elem.id === task.id) {
-                    elem.description = description.innerText;
-                }
-                localStorage.setItem("ArsenTasks", JSON.stringify(taskManager.tasks));
-            });
-        });
+        editTask(task, taskContainer, descriptionContainer, description, btnContainer, doneBtn);
     });
     deleteBtn.addEventListener("click", () => {
-        taskManager.delete(task.id);
-        TASKS_CONTAIENER.removeChild(taskContainer);
-        if (taskManager.tasks.length === 0) {
-            NO_TASKS_NOTIFICATION.classList.remove("d-none");
-            NO_TASKS_NOTIFICATION.classList.add("d-block");
-        }
+        deleteTask(task.id, taskContainer);
     });
     doneBtn.addEventListener("click", () => {
-        taskContainer.classList.add("bg-success");
-        taskManager.tasks.forEach((taskOfManager) => {
-            if (taskOfManager.id === task.id) {
-                taskOfManager.status = 1;
-            }
-        });
-        localStorage.setItem("ArsenTasks", JSON.stringify(taskManager.tasks));
+        doneTask(taskContainer, task, btnContainer, doneBtn);
     });
     return taskContainer;
 };

@@ -30,3 +30,49 @@ export const showExistingTasks = (existingTasks) => {
         showTask(task);
     });
 };
+export const deleteTask = (taskId, taskContainer) => {
+    taskManager.delete(taskId);
+    TASKS_CONTAIENER.removeChild(taskContainer);
+    if (taskManager.tasks.length === 0) {
+        NO_TASKS_NOTIFICATION.classList.remove("d-none");
+        NO_TASKS_NOTIFICATION.classList.add("d-block");
+    }
+};
+export const doneTask = (taskContainer, task, btnContainer, doneBtn) => {
+    taskContainer.classList.add("bg-success");
+    btnContainer.removeChild(doneBtn);
+    taskManager.tasks.forEach((taskOfManager) => {
+        if (taskOfManager.id === task.id) {
+            taskOfManager.status = 1;
+        }
+    });
+    localStorage.setItem("ArsenTasks", JSON.stringify(taskManager.tasks));
+};
+export const editTask = (task, taskContainer, descriptionContainer, description, btnContainer, doneBtn) => {
+    const textArea = document.createElement("textarea");
+    textArea.id = "edit-textarea";
+    textArea.classList.add("w-100", "bg-warning", "text-dark");
+    textArea.innerText = `${task.description} <-- Edit`;
+    const editSubmitBtn = document.createElement("input");
+    editSubmitBtn.type = "button";
+    editSubmitBtn.value = "Edit";
+    editSubmitBtn.classList.add("btn", "btn-outline-primary", "w-100", "mb-1", "text-light", "rounded-0", "rounded-bottom-1");
+    taskContainer.removeChild(descriptionContainer);
+    taskContainer.appendChild(textArea);
+    taskContainer.appendChild(editSubmitBtn);
+    editSubmitBtn.addEventListener("click", () => {
+        description.innerText = textArea.value;
+        taskContainer.removeChild(textArea);
+        taskContainer.removeChild(editSubmitBtn);
+        taskContainer.appendChild(descriptionContainer);
+        taskContainer.classList.remove("bg-success");
+        btnContainer.appendChild(doneBtn);
+        taskManager.tasks.forEach((elem) => {
+            if (elem.id === task.id) {
+                elem.description = description.innerText;
+                elem.status = 0;
+            }
+            localStorage.setItem("ArsenTasks", JSON.stringify(taskManager.tasks));
+        });
+    });
+};
