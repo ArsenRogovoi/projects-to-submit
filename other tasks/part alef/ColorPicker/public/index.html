@@ -22,5 +22,96 @@
     <script defer src="../src/app.js" type="module"></script>
     <title>Color Picker</title>
   </head>
-  <body></body>
+  <body class="bg-dark text-light">
+    <!-- heading: -->
+    <div class="container-fluid bg-warning p-2 text-center">
+      <span class="display-3 text-dark">Color Picker</span>
+    </div>
+    <!-- input area: -->
+    <div class="container-fluid">
+      <div class="row my-2 justify-content-center">
+        <div class="col-1">
+          <p>Red:</p>
+        </div>
+        <div class="col-6">
+          <input
+            type="range"
+            min="0"
+            max="255"
+            step="1"
+            class="w-100"
+            id="rangeR"
+          />
+        </div>
+        <div class="col-1">
+          <span class="badge rounded-pill text-bg-danger w-100" id="badgeR"
+            >128</span
+          >
+        </div>
+      </div>
+      <div class="row my-2 justify-content-center">
+        <div class="col-1">
+          <p>Green:</p>
+        </div>
+        <div class="col-6">
+          <input
+            type="range"
+            min="0"
+            max="255"
+            step="1"
+            class="w-100"
+            id="rangeG"
+          />
+        </div>
+        <div class="col-1">
+          <span class="badge rounded-pill text-bg-success w-100" id="badgeG"
+            >128</span
+          >
+        </div>
+      </div>
+      <div class="row my-2 justify-content-center">
+        <div class="col-1">
+          <p>Blue:</p>
+        </div>
+        <div class="col-6">
+          <input
+            type="range"
+            min="0"
+            max="255"
+            step="1"
+            class="w-100"
+            id="rangeB"
+          />
+        </div>
+        <div class="col-1">
+          <span class="badge rounded-pill text-bg-primary w-100" id="badgeB"
+            >128</span
+          >
+        </div>
+      </div>
+    </div>
+    <!-- colored container of result: -->
+    <div class="row justify-content-center">
+      <div
+        class="col-8"
+        style="height: 150px; background-color: rgb(128, 128, 128)"
+        id="colored-rect"
+      >
+        <div class="row bg-black p-1">
+          <div class="col">
+            rgb(<span id="rgb-code-red">128</span>,
+            <span id="rgb-code-green">128</span>,
+            <span id="rgb-code-blue">128</span>);
+          </div>
+          <div class="col">
+            #<span id="hex-code-red">80</span><span id="hex-code-green">80</span
+            ><span id="hex-code-blue">80</span>
+          </div>
+          <div class="col d-flex justify-content-end">
+            <i class="bi bi-star" style="color: rgb(255, 193, 7)"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
