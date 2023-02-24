@@ -1,0 +1,11 @@
+.deck {
+  height: 175px;
+  width: 120px;
+}
+.backOfDeck {
+  background-image: url("./assets/img/backOfDeck.jpg");
+  background-size: cover;
+}
+.border-dotted {
+  border: 5px dotted #dee2e6;
+}

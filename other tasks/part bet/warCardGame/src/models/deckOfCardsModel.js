@@ -2,8 +2,17 @@ import { cardSuit, cardValue } from "../types.js";
 import { getRndInteger } from "../utils/algoMethods.js";
 import { Card } from "./cardModel.js";
 export class Deck {
-    #cardAmountOfSuitSchema = this.createCardAmountOfSuitSchema();
-    #cards = this.createRandomDeck();
+    #cardAmountOfSuitSchema;
+    #cards;
+    constructor(type = "classic", cardAmountOfSuitSchema = []) {
+        if (type === "classic") {
+            this.#cardAmountOfSuitSchema = this.createCardAmountOfSuitSchema();
+        }
+        else {
+            this.#cardAmountOfSuitSchema = cardAmountOfSuitSchema;
+        }
+        this.#cards = this.createRandomDeck();
+    }
     createCardAmountOfSuitSchema() {
         const cardAmountOfSuitSchema = [];
         const suitRange = [
@@ -37,12 +46,16 @@ export class Deck {
     createRandomDeck() {
         const deckOfCards = new Set();
         let counter = 0;
+        const deckOfCardsArr = [];
         while (this.#cardAmountOfSuitSchema.length) {
             deckOfCards.add(this.createRandomCard());
             counter++;
         }
         console.log(`the random method has been run ${counter} times.`);
-        return deckOfCards;
+        deckOfCards.forEach((card) => {
+            deckOfCardsArr.push(card);
+        });
+        return deckOfCardsArr;
     }
     createRandomCard() {
         const randomMapKeyValuePair = getRndInteger(0, this.#cardAmountOfSuitSchema.length - 1);
@@ -51,9 +64,17 @@ export class Deck {
         return new Card(newCard[0], newCard[1]);
     }
     addCard(card) {
-        this.#cards.add(card);
+        this.#cards.push(card);
     }
     deleteCard(card) {
-        this.#cards.delete(card);
+        let indOfCard = 0;
+        this.#cards.forEach((innerCard, ind) => {
+            if (innerCard === card)
+                indOfCard = ind;
+        });
+        this.#cards.splice(indOfCard, 1);
+    }
+    getCard() {
+        return this.#cards[0];
     }
 }

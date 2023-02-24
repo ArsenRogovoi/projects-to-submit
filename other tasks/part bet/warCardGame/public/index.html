@@ -19,13 +19,135 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
     />
+    <link rel="stylesheet" href="./style.css" />
     <script defer src="../src/app.js" type="module"></script>
     <title>War Card Game</title>
   </head>
   <body class="bg-dark text-light">
     <!-- heading: -->
-    <div class="container-fluid bg-warning p-2 text-center">
+    <div class="container-fluid bg-warning p-2 text-center" id="page-heading">
       <span class="display-3 text-dark">War Card Game</span>
+    </div>
+    <div class="container-fluid">
+      <!-- game container: -->
+      <div class="row" id="game-container">
+        <!-- player 1 table: -->
+        <div
+          class="col-4 border border-start-0 border-top-0 border-bottom-0 border-warning-subtle rounded rounded-3"
+          id="player1-container"
+        >
+          <div class="display-6 text-center my-3">Player 1</div>
+          <div
+            class="row m-0 p-0 justify-content-between"
+            id="player1-deck-container"
+          >
+            <!-- deck of player 1: -->
+            <div class="col">
+              <div
+                class="deck border-dotted rounded rounded-3"
+                id="player1-deck"
+              ></div>
+              <div class="text-center" style="width: 120px">
+                X <span id="numCardsOfDeck-player1">0</span>
+              </div>
+            </div>
+            <!-- place for card of player 1: -->
+            <div class="col">
+              <div class="col">
+                <div
+                  class="deck border-dotted rounded rounded-3 d-flex flex-column justify-content-between"
+                  id="player1-card-place"
+                >
+                  <span
+                    ><i class="" id="p1-card-place-suit-top"></i
+                    ><span id="p1-card-place-value-top"></span
+                  ></span>
+                  <span style="margin-left: auto"
+                    ><i class="" id="p1-card-place-suit-down"></i
+                    ><span id="p1-card-place-value-down"></span
+                  ></span>
+                </div>
+              </div>
+            </div>
+            <input
+              type="button"
+              value="DRAW CARD"
+              class="btn btn-outline-primary text-light my-3 d-none"
+              id="player1-draw-btn"
+            />
+          </div>
+        </div>
+        <!-- dealer table: -->
+        <div class="col-4" id="dealer-container">
+          <div class="display-6 text-center my-3">Dealer</div>
+          <!-- dealer's deck: -->
+          <div class="d-flex flex-column align-items-center">
+            <div
+              class="deck border-dotted rounded rounded-3"
+              id="dealer-deck"
+            ></div>
+            <div class="text-center" style="width: 120px">
+              X <span id="numCardsOfDeck-dealer">0</span>
+            </div>
+            <input
+              type="button"
+              value="START GAME"
+              class="btn btn-primary my-3"
+              id="start-game-btn"
+            />
+          </div>
+          <div
+            class="w-100 text-center"
+            id="dealer-instruction-container"
+          ></div>
+        </div>
+        <!-- player 2 table: -->
+        <div
+          class="col-4 border border-end-0 border-top-0 border-bottom-0 border-warning-subtle rounded rounded-3"
+          id="player2-container"
+        >
+          <div class="display-6 text-center my-3">Player 2</div>
+          <div
+            class="row m-0 p-0 justify-content-between"
+            id="player1-deck-container"
+          >
+            <!-- place for card of player 2: -->
+            <div class="col">
+              <div class="col">
+                <div
+                  class="deck border-dotted rounded rounded-3"
+                  id="player2-card-place"
+                >
+                  <span
+                    ><i class="" id="p2-card-place-suit-top"></i
+                    ><span id="p2-card-place-value-top"></span
+                  ></span>
+                  <span style="margin-left: auto"
+                    ><i class="" id="p2-card-place-suit-down"></i
+                    ><span id="p2-card-place-value-down"></span
+                  ></span>
+                </div>
+              </div>
+            </div>
+            <!-- deck of player 2: -->
+            <div class="col">
+              <div
+                class="deck border-dotted rounded rounded-3"
+                id="player2-deck"
+              ></div>
+              <div class="text-center" style="width: 120px">
+                X <span id="numCardsOfDeck-player2">0</span>
+              </div>
+            </div>
+            <input
+              type="button"
+              value="DRAW CARD"
+              class="btn btn-outline-primary text-light my-3 d-none"
+              id="player2-draw-btn"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
