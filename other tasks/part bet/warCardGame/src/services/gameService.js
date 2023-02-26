@@ -1,6 +1,6 @@
 import { gameDecks } from "../app.js";
 import { GAME_STATE } from "../models/gameStatesModel.js";
-import { suitClassModel } from "../models/suitClassModel.js";
+import suitClassModel from "../models/suitClassModel.js";
 import { DEALER_INSTRUCTION_CONTAINER, PLAYER_1_CARD_SUIT_DOWN, PLAYER_1_CARD_SUIT_TOP, PLAYER_1_CARD_VALUE_DOWN, PLAYER_1_CARD_VALUE_TOP, PLAYER_1_DRAW_BTN, PLAYER_2_CARD_SUIT_DOWN, PLAYER_2_CARD_SUIT_TOP, PLAYER_2_CARD_VALUE_DOWN, PLAYER_2_CARD_VALUE_TOP, START_GAME_BTN, } from "./domService.js";
 const drawnedCards = {
     p1: [],
@@ -36,23 +36,21 @@ export const turnOfPlayer1 = () => {
     const drawnedCard = gameDecks.dealerDeck.getCard();
     gameDecks.dealerDeck.deleteCard(drawnedCard);
     drawnedCards.p1.push(drawnedCard);
-    renderDrawnedCard();
+    renderDrawnedCard("p1");
 };
-const renderDrawnedCard = () => {
-    if (drawnedCards.p1) {
-        const suit = drawnedCards.p1[drawnedCards.p1.length - 1].suit;
-        const value = drawnedCards.p1[drawnedCards.p1.length - 1].value;
-        PLAYER_1_CARD_SUIT_TOP.className = `${suitClassModel[suit]}`;
+const renderDrawnedCard = (p) => {
+    const suit = drawnedCards[p][drawnedCards[p].length - 1].suit;
+    const value = drawnedCards[p][drawnedCards[p].length - 1].value;
+    if (p === "p1") {
+        PLAYER_1_CARD_SUIT_TOP.className = `${suitClassModel.get(suit)}`;
         PLAYER_1_CARD_VALUE_TOP.innerText = `${value}`;
-        PLAYER_1_CARD_SUIT_DOWN.className = `${suitClassModel[suit]}`;
+        PLAYER_1_CARD_SUIT_DOWN.className = `${suitClassModel.get(suit)}`;
         PLAYER_1_CARD_VALUE_DOWN.innerText = `${value}`;
     }
-    if (drawnedCards.p2) {
-        const suit = drawnedCards.p2[drawnedCards.p2.length - 1].suit;
-        const value = drawnedCards.p2[drawnedCards.p2.length - 1].value;
-        PLAYER_2_CARD_SUIT_TOP.className = `${suitClassModel[suit]}`;
+    else {
+        PLAYER_2_CARD_SUIT_TOP.className = `${suitClassModel.get(suit)}`;
         PLAYER_2_CARD_VALUE_TOP.innerText = `${value}`;
-        PLAYER_2_CARD_SUIT_DOWN.className = `${suitClassModel[suit]}`;
+        PLAYER_2_CARD_SUIT_DOWN.className = `${suitClassModel.get(suit)}`;
         PLAYER_2_CARD_VALUE_DOWN.innerText = `${value}`;
     }
 };

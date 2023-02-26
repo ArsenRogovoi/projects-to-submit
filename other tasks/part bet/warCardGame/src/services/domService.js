@@ -24,4 +24,4 @@ export const PLAYER_2_CARD_SUIT_DOWN = document.querySelector("#p2-card-place-su
 export const DEALER_CONTAINER = document.querySelector("#dealer-container");
 export const DEALER_DECK = document.querySelector("#dealer-deck");
 export const DEALER_DECK_AMOUNT_CARDS = document.querySelector("#numCardsOfDeck-dealer");
-export const DEALER_INSTRUCTION_CONTAINER = document.querySelector("#numCardsOfDeck-dealer");
+export const DEALER_INSTRUCTION_CONTAINER = document.querySelector("#dealer-instruction-container");

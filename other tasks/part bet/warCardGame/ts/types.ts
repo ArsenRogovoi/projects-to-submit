@@ -25,9 +25,9 @@ export enum cardSuit {
 }
 
 export interface gameDecksObj {
-  dealerDeck: Deck;
-  player1Deck: Deck;
-  player2Deck: Deck;
+  dealerDeck: Deck | undefined;
+  player1Deck: Deck | undefined;
+  player2Deck: Deck | undefined;
 }
 
 export interface drawnedCardsObj {

@@ -39,6 +39,9 @@ export const PLAYER_1_CARD_VALUE_DOWN = document.querySelector(
 export const PLAYER_1_CARD_SUIT_DOWN = document.querySelector(
   "#p1-card-place-suit-down"
 ) as HTMLElement;
+export const PLAYER_1_CARD_NUM = document.querySelector(
+  "#numCardsOfCardPlace-player1"
+) as HTMLDivElement;
 //#endregion
 
 //#region player2
@@ -72,6 +75,9 @@ export const PLAYER_2_CARD_VALUE_DOWN = document.querySelector(
 export const PLAYER_2_CARD_SUIT_DOWN = document.querySelector(
   "#p2-card-place-suit-down"
 ) as HTMLElement;
+export const PLAYER_2_CARD_NUM = document.querySelector(
+  "#numCardsOfCardPlace-player2"
+) as HTMLDivElement;
 //#endregion
 
 //#region dealer
@@ -85,6 +91,6 @@ export const DEALER_DECK_AMOUNT_CARDS = document.querySelector(
   "#numCardsOfDeck-dealer"
 ) as HTMLDivElement;
 export const DEALER_INSTRUCTION_CONTAINER = document.querySelector(
-  "#numCardsOfDeck-dealer"
+  "#dealer-instruction-container"
 ) as HTMLDivElement;
 //#endregion
