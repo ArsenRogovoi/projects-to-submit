@@ -1,4 +1,3 @@
-import { Deck } from "./models/deckOfCardsModel.js";
 import {
   GAME_CONTAINER,
   PAGE_HEADING,

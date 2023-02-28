@@ -74,7 +74,27 @@ export class Deck {
         });
         this.#cards.splice(indOfCard, 1);
     }
-    getCard() {
-        return this.#cards[0];
+    getRandomCard() {
+        if (this.#cards.length) {
+            const numOfCards = this.#cards.length;
+            const rndNum = getRndInteger(0, numOfCards - 1);
+            return this.#cards[rndNum];
+        }
+        else {
+            return null;
+        }
+    }
+    getAmountOfCards() {
+        return this.#cards.length;
+    }
+    hasCard() {
+        if (this.#cards.length)
+            return true;
+        return false;
+    }
+    hasLastCard() {
+        if (this.#cards.length === 1)
+            return true;
+        return false;
     }
 }

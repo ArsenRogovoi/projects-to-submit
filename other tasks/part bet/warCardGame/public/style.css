@@ -9,3 +9,7 @@
 .border-dotted {
   border: 5px dotted #dee2e6;
 }
+.winner {
+  background-color: rgb(57, 205, 57);
+  color: black;
+}

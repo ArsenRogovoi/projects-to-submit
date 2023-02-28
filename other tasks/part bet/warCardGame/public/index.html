@@ -36,10 +36,12 @@
           class="col-4 border border-start-0 border-top-0 border-bottom-0 border-warning-subtle rounded rounded-3"
           id="player1-container"
         >
-          <div class="display-6 text-center my-3">Player 1</div>
+          <div class="display-6 text-center my-3" id="player1-name">
+            Player 1
+          </div>
           <div
             class="row m-0 p-0 justify-content-between"
-            id="player1-deck-container"
+            id="player1-decks-container"
           >
             <!-- deck of player 1: -->
             <div class="col">
@@ -111,16 +113,18 @@
           class="col-4 border border-end-0 border-top-0 border-bottom-0 border-warning-subtle rounded rounded-3"
           id="player2-container"
         >
-          <div class="display-6 text-center my-3">Player 2</div>
+          <div class="display-6 text-center my-3" id="player2-name">
+            Player 2
+          </div>
           <div
             class="row m-0 p-0 justify-content-between"
-            id="player1-deck-container"
+            id="player2-decks-container"
           >
             <!-- place for card of player 2: -->
             <div class="col">
               <div class="col">
                 <div
-                  class="deck border-dotted rounded rounded-3"
+                  class="deck border-dotted rounded rounded-3 d-flex flex-column justify-content-between"
                   id="player2-card-place"
                 >
                   <span

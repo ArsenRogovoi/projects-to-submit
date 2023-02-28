@@ -12,8 +12,11 @@ export const START_GAME_BTN = document.querySelector(
 export const PLAYER_1_CONTAINER = document.querySelector(
   "#player1-container"
 ) as HTMLDivElement;
-export const PLAYER_1_DECK_CONTAINER = document.querySelector(
-  "#player1-deck-container"
+export const PLAYER_1_NAME = document.querySelector(
+  "#player1-name"
+) as HTMLDivElement;
+export const PLAYER_1_DECKS_CONTAINER = document.querySelector(
+  "#player1-decks-container"
 ) as HTMLDivElement;
 export const PLAYER_1_DECK = document.querySelector(
   "#player1-deck"
@@ -48,8 +51,11 @@ export const PLAYER_1_CARD_NUM = document.querySelector(
 export const PLAYER_2_CONTAINER = document.querySelector(
   "#player2-container"
 ) as HTMLDivElement;
-export const PLAYER_2_DECK_CONTAINER = document.querySelector(
-  "#player2-deck-container"
+export const PLAYER_2_NAME = document.querySelector(
+  "#player2-name"
+) as HTMLDivElement;
+export const PLAYER_2_DECKS_CONTAINER = document.querySelector(
+  "#player2-decks-container"
 ) as HTMLDivElement;
 export const PLAYER_2_DECK = document.querySelector(
   "#player2-deck"

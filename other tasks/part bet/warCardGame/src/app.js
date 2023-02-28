@@ -1,15 +1,20 @@
-import { Deck } from "./models/deckOfCardsModel.js";
-import { GAME_STATE } from "./models/gameStatesModel.js";
-import { GAME_CONTAINER, PAGE_HEADING, PLAYER_1_DRAW_BTN, START_GAME_BTN, } from "./services/domService.js";
-import { dealerProtocol, turnOfPlayer1 } from "./services/gameService.js";
+import { GAME_CONTAINER, PAGE_HEADING, PLAYER_1_DRAW_BTN, PLAYER_2_DRAW_BTN, START_GAME_BTN, } from "./services/domService.js";
+import { startGame, turnOfPlayer1, turnOfPlayer2, } from "./services/gameService.js";
 import { fitHeight } from "./utils/algoMethods.js";
 fitHeight(GAME_CONTAINER, [PAGE_HEADING]);
 export const gameDecks = {
-    dealerDeck: new Deck(),
-    player1Deck: new Deck("custom"),
-    player2Deck: new Deck("custom"),
+    dealerDeck: undefined,
+    player1Deck: undefined,
+    player2Deck: undefined,
 };
-START_GAME_BTN.addEventListener("click", () => {
-    dealerProtocol(GAME_STATE.START);
-});
+export const drawedCards = {
+    p1: [],
+    p2: [],
+};
+export const specialTurn = {
+    isSpecialTurn: false,
+    numOfSpecialTurn: 0,
+};
+START_GAME_BTN.addEventListener("click", startGame);
 PLAYER_1_DRAW_BTN.addEventListener("click", turnOfPlayer1);
+PLAYER_2_DRAW_BTN.addEventListener("click", turnOfPlayer2);
